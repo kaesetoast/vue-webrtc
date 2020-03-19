@@ -1,10 +1,10 @@
 <template>
-  <div class="video-list" > 
+  <div class="video-list" >
       <div v-for="item in videoList"
           v-bind:video="item"
           v-bind:key="item.id"
           class="video-item">
-        <video controls autoplay playsinline ref="videos" :height="cameraHeight" :muted="item.muted" :id="item.id"></video>
+        <video autoplay playsinline ref="videos" :height="cameraHeight" :muted="item.muted" :id="item.id"></video>
       </div>
   </div>
 </template>
@@ -93,7 +93,7 @@
           }
         }
 
-        setTimeout(function(){ 
+        setTimeout(function(){
           for (var i = 0, len = that.$refs.videos.length; i < len; i++) {
             if (that.$refs.videos[i].id === stream.streamid)
             {
@@ -102,7 +102,7 @@
             }
           }
         }, 1000);
-        
+
         that.$emit('joined-room', stream.streamid);
       };
       this.rtcmConnection.onstreamended = function (stream) {
@@ -200,18 +200,3 @@
     }
   };
 </script>
-<style scoped>
-  .video-list {
-    background: whitesmoke;
-    height: auto;
-  }
-
-    .video-list div {
-      padding: 0px;
-    }
-
-  .video-item {
-    background: #c5c4c4;
-    display: inline-block;
-  }
-</style>
